@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Complex Form</title>
+</head>
+
+<body class="min-h-[100dvh] bg-[lightgrey]">
+    <article class="w-[min(85%,1000px)] mx-auto bg-white p-10">
+    <section class="flex gap-10 mb-5">
+        <div class="flex-1 ">
+            <div class="mb-3 flex justify-between w-full">
+                <label class=" mr-10" for="customer">Customer:</label>
+                <select class="border border-solid border-[black]" id="customer" name="customer">
+                    <option value="customer 1">customer 1</option>
+                    <option value="customer 2">customer 2</option>
+                    <option value="customer 3">customer 3</option>
+                    <option value="customer 4">customer 4</option>
+                </select>
+            </div>
+            <div class="mb-3 flex justify-between w-full">
+                <label class=" mr-10" for="employee">Employee:</label>
+                <select class="border border-solid border-[black]" id="employee" name="employee">
+                    <option value="employee 1">employee 1</option>
+                    <option value="employee 2">employee 2</option>
+                    <option value="employee 3">employee 3</option>
+                    <option value="employee 4">employee 4</option>
+                </select>
+            </div>
+            <div class="mb-3 flex justify-between w-full">
+                <label class=" mr-10" for="orderdatepicker">Order Date:</label>
+                <input class="border border-solid border-[black]" type="date" id="orderdatepicker"
+                    name="orderdatepicker">
+            </div>
+            <div class="mb-3 flex justify-between w-full">
+                <label class=" mr-10" for="datepicker">required date:</label>
+                <input class="border border-solid border-[black]" type="date" id="datepicker" name="datepicker">
+            </div>
+            <div class="flex justify-between w-full">
+                <label class=" mr-10" for="shippeddatepicker">required date:</label>
+                <input class="border border-solid border-[black]" type="date" id="shippeddatepicker"
+                    name="shippeddatepicker">
+            </div>
+        </div>
+
+        
+        <div class="flex-1">
+            <div class="mb-3 flex justify-between w-full">
+                <label class=" mr-10" for="address">Address:</label>
+                <input class="border border-solid border-[black]" type="text" id="address" name="address">
+            </div>
+            <div class="mb-3 flex justify-between w-full">
+                <label for="city">City:</label>
+                <input class="border border-solid border-[black]" type="text" id="city" name="city">
+            </div>
+            <div class="mb-3 flex justify-between w-full">
+                <label class=" mr-10" for="region">Region:</label>
+                <input class="border border-solid border-[black]" type="text" id="region" name="region">
+            </div>
+            <div class="mb-3 flex justify-between w-full">
+                <label class=" mr-10" for="postalCode">Postal Code:</label>
+                <input class="border border-solid border-[black]" type="number" id="postalCode" name="postalCode">
+            </div>
+            <div class="flex justify-between w-full">
+                <label class=" mr-10" for="shipCountry">Ship Country:</label>
+                <input class="border border-solid border-[black]" type="text" id="shipCountry" name="postalCode">
+            </div>
+        </div>
+    </section>
+
+    <section class=" border-2 border-solid border-[lightgrey]">
+        <div class="w-full border-b-2 border-solid border-[lightgrey] flex px-2 mb-2">
+            <div class="relative mr-2">
+                <input type="text" placeholder="name" class="border border-solid border-[black]">
+                <div class="absolute top-1/2 -translate-y-[50%] right-3">
+                    <svg class="fill-[lightgrey]" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
+                </div>
+            </div>
+            <select class="border border-solid border-[black]" id="Actions" name="Actions">
+                <option value="" disabled selected hidden>Actions</option>
+                <option value="Add">Add</option>
+                <option value="Update">Update</option>
+                <option value="Delete">Delete</option>
+                <option value="Export">Export</option>
+            </select>
+        </div>
+
+        <div class="table w-full px-2 mb-5">
+            <div class="table-header-group mb-5">
+              <div class="table-row text-[#438EFF]">
+                <div class="table-cell text-left ">Product Name</div>
+                <div class="table-cell text-left ">Unit Price</div>
+                <div class="table-cell text-left ">Quantity</div>
+                <div class="table-cell text-left ">Discount</div>
+                <div class="table-cell text-left ">Category</div>
+                <div class="table-cell text-left ">Supplier</div>
+                <div class="table-cell text-left ">Ship Country</div>
+              </div>
+            </div>
+            <div class="table-row-group ">
+                <div class="table-row ">
+                  <div class="table-cell text-left ">Grandma's Spread</div>
+                  <div class="table-cell text-left ">25$</div>
+                  <div class="table-cell text-left ">20</div>
+                  <div class="table-cell text-left ">25%</div>
+                  <div class="table-cell text-left ">Condiments</div>
+                  <div class="table-cell text-left ">Grandma Homestead</div>
+                  <div class="table-cell text-left ">375$</div>
+                </div>
+              </div>
+              <div class="table-row-group ">
+                <div class="table-row ">
+                  <div class="table-cell text-left ">Grandma's Spread</div>
+                  <div class="table-cell text-left ">25$</div>
+                  <div class="table-cell text-left ">20</div>
+                  <div class="table-cell text-left ">25%</div>
+                  <div class="table-cell text-left ">Condiments</div>
+                  <div class="table-cell text-left ">Grandma Homestead</div>
+                  <div class="table-cell text-left ">375$</div>
+                </div>
+              </div>
+              <div class="table-row-group ">
+                <div class="table-row ">
+                  <div class="table-cell text-left ">Grandma's Spread</div>
+                  <div class="table-cell text-left ">25$</div>
+                  <div class="table-cell text-left ">20</div>
+                  <div class="table-cell text-left ">25%</div>
+                  <div class="table-cell text-left ">Condiments</div>
+                  <div class="table-cell text-left ">Grandma Homestead</div>
+                  <div class="table-cell text-left ">375$</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+    </section>
+
+
+    <section class="flex gap-10 border-b-2 border-solid border-[lightgrey] py-5 mb-5">
+        <div class="flex-1 flex flex-col justify-end min-h-full">
+            <div class="mb-3 flex justify-between w-full">
+                <label class=" mr-10" for="shipVia">Ship Via:</label>
+                <select class="border border-solid border-[black]" id="shipVia" name="shipVia">
+                    <option value="ship 1">United Package</option>
+                    <option value="ship 2">Western Union</option>
+                    <option value="ship 3">Amazon</option>
+                    <option value="ship 4">Ali Baba</option>
+                </select>
+            </div>
+            <div class="flex justify-between w-full">
+                <label class=" mr-10" for="shipName">Ship Name:</label>
+                <input class="border border-solid border-[black]" type="text" id="shipName"name="shipName">
+            </div>
+        </div>
+
+        
+        <div class="flex-1 ">
+            <div class="mb-3 flex justify-between w-full block">
+                <p class=" mr-10">Subtotal:</p>
+                <p>$792.75</p>
+            </div>
+            <div class="mb-3 flex justify-between w-full block">
+                <p class=" mr-10">Freight:</p>
+                <p>$38.75</p>
+            </div>
+            <div class="flex justify-between w-full block">
+                <p class=" mr-10">Total:</p>
+                <p>$831.03</p>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="flex items-center justify-between gap-10 ">
+        <p>* indicates a required field</p>
+        <div class="flex gap-5">
+            <button class="bg-[#ebebeb] w-[100px] py-1 rounded-[3px]">Ok</button>
+            <button class="bg-[#ebebeb] w-[100px] py-1 rounded-[3px]">Delete</button>
+            <button class="bg-[#ebebeb] w-[100px] py-1 rounded-[3px]">Cancel</button>
+        </div>
+    </section>
+</article>
+</body>
+
+</html>
