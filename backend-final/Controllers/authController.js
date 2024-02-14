@@ -12,7 +12,6 @@ module.exports.signup = async (req, res) => {
   const userName = req.body.userName;
   const password = req.body.password;
   const name = req.body.name;
-  const role = req.query.role;
 
   try {
     let user = null;
@@ -30,19 +29,12 @@ module.exports.signup = async (req, res) => {
     //hashing password
     const hashedPassword = await bcrypt.hash(password, 10)
 
-    if (role && role.toString() === "admin") {
-      user = new Admin({
-        name,
-        password: hashedPassword,
-        userName,
-      });
-    } else if (!role) {
       user = new User({
         name,
         password: hashedPassword,
         userName,
+        role: 'user'
       });
-    }
 
     //saving user
     user.save().then((User) => {
@@ -71,9 +63,7 @@ module.exports.login = async (req, res) => {
 
 try{
   //find user
-  const user =
-    (await User.findOne({ userName })) ||
-    (await Admin.findOne({ userName }));
+  const user = (await User.findOne({ userName }));
 
   if (!user ||  !(await bcrypt.compare(password, user.password)) ) {
     //user not found
@@ -84,12 +74,7 @@ try{
   }
 
   //create jwt token
-  const jwtUser = await jwt.sign({
-    ...user,
-    role: user instanceof Admin ? "Admin" : "User",
-  },
-  process.env.JWTKEY
-  );
+  const jwtUser = await jwt.sign(user , process.env.JWTKEY);
 
   //return results
   return res
@@ -105,3 +90,37 @@ catch(error){
       });
 }
 };
+
+module.exports.updateProfile = async (req,res,next) => {
+  const name = req.body.name;
+  const password = req.body.password;
+  const profilePic = req.file;
+  const hashedPassword = await bcrypt.hash(password);
+
+  try{
+    //forming user data
+    req.user =  {
+      ...req.user,
+      name: (name || req.name),
+      password: (hashedPassword || req.password),
+      profilePic: (profilePic || req.profilePic),
+    }
+
+    //updating user data
+    await req.user.save();
+
+    //return response
+    return res.status(200).json({
+      Exception: '',
+      result: 'profile updated succesfully'
+    })
+  }
+  catch(error){
+    //error handling
+    console.log(error);
+    return res.status(500).json({
+        Exception: "Internal Server Error: couldn't change password",
+        result: null,
+      });
+  }
+}

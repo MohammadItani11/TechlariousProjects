@@ -16,7 +16,29 @@ const playlistSchema = mongoose.Schema({
     },
     coverPic: {
         type: String
-    }
+    },
+    collaborators: [
+        {
+            userId: {
+                type: mongoose.types.ObjectId,
+                ref: 'User'
+            }
+        }
+    ],
+    reviews: [
+        {
+            userId: {
+                type:mongoose.types.ObjectId,
+                ref: "USer",
+            },
+            rating:{
+                type: Number
+            },
+            comment: {
+                type: String,
+            }
+        }
+    ]
 })
 
 //create playlist modal

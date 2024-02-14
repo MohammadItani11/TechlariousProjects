@@ -28,7 +28,21 @@ const songSchema = mongoose.Schema({
     songPath: {
         type: String,
         required: true
-    }
+    },
+    reviews: [
+        {
+            userId: {
+                type:mongoose.types.ObjectId,
+                ref: "USer",
+            },
+            rating:{
+                type: Number
+            },
+            comment: {
+                type: String,
+            }
+        }
+    ]
 })
 
 //create song schema
