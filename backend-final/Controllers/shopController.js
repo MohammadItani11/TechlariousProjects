@@ -13,7 +13,8 @@ module.exports.getSongs = async (req, res, next) => {
 
     return res.status(200).json({
         Exception: '',
-        result: Songs
+        result: 'Songs retrieved succesfully',
+        Songs
     })
   } catch (error) {
     //error handling

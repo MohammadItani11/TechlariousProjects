@@ -2,7 +2,7 @@ const mongoose = require("mongoose")
 
 const songSchema = mongoose.Schema({
     userId: {
-        type: mongoose.Schema.ObjectId,
+        type: mongoose.Types.ObjectId,
         ref: "User",
         required: true
     },
@@ -16,9 +16,9 @@ const songSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    duration: {
-        type: Number,
-    },
+    //duration: {
+        //type: Number,
+    //},
     language: {
         type: String
     },
@@ -32,7 +32,7 @@ const songSchema = mongoose.Schema({
     reviews: [
         {
             userId: {
-                type:mongoose.types.ObjectId,
+                type:mongoose.Types.ObjectId,
                 ref: "USer",
             },
             rating:{

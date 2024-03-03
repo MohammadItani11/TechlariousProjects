@@ -1,13 +1,20 @@
 //imports
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const { validationResult } = require('express-validator');
 
 //import modals
-const User = require("../Models/User");
-const Admin = require("../Models/Admin");
+const User = require("../Models/USer");
 
 //handle signup
 module.exports.signup = async (req, res) => {
+  // Check for validation errors
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ Exception: errors.array().map(error => error.msg), result: null });
+  }
+
+
   //extract data
   const userName = req.body.userName;
   const password = req.body.password;
@@ -16,7 +23,7 @@ module.exports.signup = async (req, res) => {
   try {
     let user = null;
     user =
-      (await User.findOne({ userName })) || (await Admin.findOne({ userName }));
+      (await User.findOne({ userName }));
 
     if (user !== null) {
       //user already found
@@ -74,7 +81,8 @@ try{
   }
 
   //create jwt token
-  const jwtUser = await jwt.sign(user , process.env.JWTKEY);
+  console.log(user.id)
+  const jwtUser = await jwt.sign({ userId: user.id } , process.env.JWTKEY, { expiresIn: "1h" });
 
   //return results
   return res
