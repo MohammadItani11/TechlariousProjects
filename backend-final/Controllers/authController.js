@@ -103,7 +103,7 @@ module.exports.updateProfile = async (req,res,next) => {
   const name = req.body.name;
   const password = req.body.password;
   const profilePic = req.file;
-  const hashedPassword = await bcrypt.hash(password);
+  const hashedPassword = await bcrypt.hash(password,10);
 
   try{
     //forming user data

@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
+const passport = require("passport")
+
 const { body } = require("express-validator");
 
 //import controllers
@@ -27,5 +29,19 @@ router.post(
   ],
   authController.signup
 );
+
+//google auth login
+router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
+
+// Callback route for Google OAuth2 authentication
+router.get('/auth/google/callback',
+  passport.authenticate('google', { failureRedirect: '/login' }),
+  (req, res) => {
+    // Successful authentication, redirect to custom authentication controller
+    //authController.authenticateUser(req, res);
+    return 'dpnr'
+  }
+);
+
 
 module.exports = router;

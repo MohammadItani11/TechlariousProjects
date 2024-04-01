@@ -14,7 +14,7 @@ const NavBar = ({ elements }) => {
 
   useEffect(() => {
     document.addEventListener("scroll", () => {
-      if (window.scrollY > 20) {
+      if (window.scrollY > 100) {
         setIsScroll(true);
       } else {
         setIsScroll(false);
@@ -26,13 +26,13 @@ const NavBar = ({ elements }) => {
     <nav
       className={`${
         isScroll
-          ? "bg-white"
-          : "bg-none fixed top-0 left-[50%] -translate-x-[50%] w-full"
-      } py-2`}
+          ? "bg-[#2E875D] "
+          : "bg-transparent  "
+      } z-10 py-5 fixed top-0 left-[50%] -translate-x-[50%] w-full duration-[500ms]`}
     >
       <Layout>
         <section className="flex items-center justify-between">
-          <Image className="max-w-[86px] h-auto" src={Logo}></Image>
+          <Image alt="logo" className="max-w-[86px] h-auto" src={Logo}></Image>
           <div className="max-md:hidden">
             {typeof element === Array ? (
               elements.array.forEach((element) => {
